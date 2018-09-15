@@ -53,12 +53,12 @@
                         <form>
                             <div class="form-group">
                                 <label for="userName" class="col-form-label">UserName</label>
-                                <input type="text" class="form-control" id="userName" />
+                                <input id="userName" name="username" type="text" />
                             </div>
 
                             <div class="form-group">
                                 <label for="passWord" class="col-form-label">Password</label>
-                                <input type="submit" />
+                                <input id="passWord" name="passWord" type="password" />
                             </div>
                         </form>
                     </div>
@@ -82,16 +82,20 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form th:action="@{/register}" method="POST" th:object="${user}">
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">UserName</label>
-                                <input type="text" class="form-control" id="recipient-name" />
+                                <label for="username" class="type">Username</label>
+                                <input id="username" class="form-control type" th:field="*{username}"/>
                             </div>
-
                             <div class="form-group">
-                                <label for="text" class="col-form-label">Password</label>
-                                <input class="form-control" id="text" />
+                                <label for="email" class="type">Email</label>
+                                <input id="email" class="form-control type" th:field="*{email}"/>
                             </div>
+                            <div class="form-group">
+                                <label for="password" class="type">Password</label>
+                                <input id="password" class="form-control type" type="password" th:field="*{password}"/>
+                            </div>
+                            <input class="btn btn-primary type" value="Sign me up!" type="submit"/>
                         </form>
                     </div>
                     <div class="modal-footer">
