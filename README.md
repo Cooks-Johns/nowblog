@@ -2,7 +2,8 @@
 
 <hr>
 
-<p> Isn't up and runnuging just but its a work in <strong> prgress</strong>.</p>
+<p> Isn't up and running just yet
+but its a work in <strong> prgress</strong>.</p>
 
 
 
