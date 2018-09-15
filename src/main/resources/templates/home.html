@@ -10,10 +10,139 @@
     <h1>The Lost Scrolls of Earth</h1>
 
     <hr />
-
     <h4>By: YOU</h4>
 
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Open for Login</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Open for Registration </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#emailBotModal">Open for to let us spam you with random emailss</button>
+
+        <!--Login Modal-->
+
+
+
+        <!-- This is a good way to setUp your login modal
+
+
+    <div th:if="${param.error}">
+        Invalid Username and Password.
     </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <input type="submit" value="Log In" />
+    </form>
+
+    -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">LogIn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="userName" class="col-form-label">UserName</label>
+                                <input type="text" class="form-control" id="userName" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="passWord" class="col-form-label">Password</label>
+                                <input type="submit" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">LogIn</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--register Modal-->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">UserName</label>
+                                <input type="text" class="form-control" id="recipient-name" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="text" class="col-form-label">Password</label>
+                                <input class="form-control" id="text" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary badge badge-pill badge-primarybadge badge-pill badge-primary" data-dismiss="modal">Take the Blue pill</button>
+                        <button type="button" class="btn btn-primary badge badge-pill badge-danger">Take the Red Pill</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--chat Bot-->
+
+
+        <!--<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+            <!--<div class="modal-dialog" role="document">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<h5 class="modal-title" id="exampleModalLabel">LogIn</h5>-->
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                            <!--<span aria-hidden="true">&times;</span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body">-->
+                        <!--<form>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="recipient-name" class="col-form-label">UserName</label>-->
+                                <!--<input type="text" class="form-control" id="recipient-name" />-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group">-->
+                                <!--<label for="message-text" class="col-form-label">Password</label>-->
+                                <!--<textarea class="form-control" id="message-text"></textarea>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                    <!--<div class="modal-footer">-->
+                        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                        <!--<button type="button" class="btn btn-primary">LogIn</button>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+    </div>
+
+
+    <script th:replace="partials/fragments :: bootstrap"></script>
+
 
     </body>
 </html>
