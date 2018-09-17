@@ -1,12 +1,17 @@
 body {
     background-color: #eabff6;
-}
-
-.homeHeader {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
     text-align: center;
+}
+
+h1, h4{
     font-family: 'Libre Barcode 128 Text', cursive;
-    color: #f8f9fa;
+    /*background-color: black;*/
+    color: #080808;
 
 }
 
-/*===========================================================*/
+/*====================================r=======================*/
