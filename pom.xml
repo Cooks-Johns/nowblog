@@ -26,6 +26,15 @@
 
 	<dependencies>
 
+		<!--google login-->
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-plus -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-plus</artifactId>
+			<version>v1-rev557-1.25.0</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
