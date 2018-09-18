@@ -1,10 +1,16 @@
 package com.bloggertime.nowblog.repositories;
 
 import com.bloggertime.nowblog.models.User;
+import org.springframework.data.repository.CrudRepository;
 
-public class UserRepository {
+import java.util.List;
 
-    public interface Users extends CrudRepository<User, Long> {
-        User findByUsername(String username);
-    }
+public interface UserRepository extends CrudRepository<User, Long> {
+
+
+    List<User> findAll();
+    User findByUserName(String username);
+    User findUserById(long id);
+
+
 }

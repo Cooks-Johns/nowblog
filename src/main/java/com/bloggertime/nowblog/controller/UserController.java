@@ -1,37 +1,56 @@
 package com.bloggertime.nowblog.controller;
 
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bloggertime.nowblog.models.User;
+import com.bloggertime.nowblog.models.UserWithRoles;
+import com.bloggertime.nowblog.repositories.PostRepository;
+import com.bloggertime.nowblog.repositories.UserRepository;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class UserController {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final PostRepository postService;
 
-    private Roles roles;
 
-    @Autowired
-    public UsersController(
-            UsersRepository usersDao,
-            PasswordEncoder passwordEncoder,
-            Roles roles
-    ) {
-        /* ... */
-        this.roles = roles;
+    public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder, PostRepository postService) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.postService = postervice;
+
     }
 
-    /* ... */
-    private void authenticate(SecurityProperties.User user) {
-        // Since we're using roles we need to retrieve them from the database
-        // The rest of the method does not need changes
-        UserDetails userDetails = new UserWithRoles(user, roles.ofUserWith(user.getUsername());
-        /* ... */
+    @GetMapping("/sign-up")
+    public String showSignupForm(Model model) {
+        model.addAttribute("user", new SecurityProperties.User());
+        return "usersRepository/sign-up";
     }
+
+    @PostMapping("/sign-up")
+    public String saveUser(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        usersRepository.save(user);
+        return "redirect:/login";
+    }
+
+
+    @GetMapping("/profile/{id}")
+    public String showProfile(@PathVariable long id, Model view) {
+        view.addAttribute("user", usersRepository.findUsersById(id));
+        List<Post> postList = postervice.findAllByOwner_Id(id);
+        view.addAttribute("posts", postList);
+        return "users/profile";
+    }
+
 }
