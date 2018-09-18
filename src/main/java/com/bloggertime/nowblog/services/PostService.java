@@ -1,10 +1,13 @@
 package com.bloggertime.nowblog.services;
 
+import com.bloggertime.nowblog.models.Post;
 import com.bloggertime.nowblog.models.User;
 import com.bloggertime.nowblog.repositories.PostRepository;
 import com.bloggertime.nowblog.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PostService {
@@ -24,24 +27,26 @@ public class PostService {
             return postDao.findAll();
         }
 
-        public Post save(PostRepository postDao) {
+        public Post save(Post post) {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User user = usersDao.findUsersById(sessionUser.getId());
             post.setOwner(user);
 
 
-            geoDao.save(post);
+            postDao.save(post);
             return post;
         }
 
 
 
-        public Geocache findById(long id) {
-            return geoDao.findById(id);
+        public Post findById(long id) {
+            return postDao.findById(id);
         }
 
-        public List<Post> findAllByOwnerId(long id){return postDao.findAllByOwner_Id(id);}
-        public List<Post> findAllByFinderId(long id){return postDao.findAllByFinder_Id(id);}
+        public List<Post> findAllByOwnerId(long id) {
+            return postDao.findAllByOwner_ID(id);
+        }
+
 
 
 

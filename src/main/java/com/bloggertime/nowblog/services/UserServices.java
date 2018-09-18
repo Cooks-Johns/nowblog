@@ -20,7 +20,7 @@ public class UserServices {
     public User findRandomUser() {
         List<User> users = userDao.findAll();
         Random random = new Random();
-        return users.get(random.netInt(users.size()));
+        return users.get(random.nextInt(users.size()));
     }
 
     public User save (User user) {

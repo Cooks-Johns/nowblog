@@ -1,6 +1,7 @@
 package com.bloggertime.nowblog.controller;
 
 
+import com.bloggertime.nowblog.models.Post;
 import com.bloggertime.nowblog.models.User;
 import com.bloggertime.nowblog.models.UserWithRoles;
 import com.bloggertime.nowblog.repositories.PostRepository;
@@ -26,7 +27,7 @@ public class UserController {
     public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder, PostRepository postService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.postService = postervice;
+        this.postService = postService;
 
     }
 
@@ -40,15 +41,15 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        usersRepository.save(user);
+        userRepository.save(user);
         return "redirect:/login";
     }
 
 
     @GetMapping("/profile/{id}")
     public String showProfile(@PathVariable long id, Model view) {
-        view.addAttribute("user", usersRepository.findUsersById(id));
-        List<Post> postList = postervice.findAllByOwner_Id(id);
+        view.addAttribute("user", userRepository.findUsersById(id));
+        List<Post> postList = postService.findAllByOwner_ID(id);
         view.addAttribute("posts", postList);
         return "users/profile";
     }

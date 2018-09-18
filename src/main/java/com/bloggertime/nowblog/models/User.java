@@ -34,12 +34,9 @@ public class User {
     private String email;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "finder")
-    private List<Posts> myFinds;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     @JsonBackReference
-    private List<Posts> myCaches;
+    private List<Post> myCaches;
 
 
     public User(User copy) {
@@ -64,19 +61,11 @@ public class User {
 
 
 
-    public List<Posts> getMyFinds() {
-        return myFinds;
-    }
-
-    public void setMyFinds(List<Posts> myFinds) {
-        this.myFinds = myFinds;
-    }
-
-    public List<Posts> getMyCaches() {
+    public List<Post> getMyCaches() {
         return myCaches;
     }
 
-    public void setMyCaches(List<Posts> myCaches) {
+    public void setMyCaches(List<Post> myCaches) {
         this.myCaches = myCaches;
     }
 
