@@ -3,6 +3,7 @@ package com.bloggertime.nowblog.controller;
 import com.bloggertime.nowblog.models.Post;
 import com.bloggertime.nowblog.repositories.UserRepository;
 import com.bloggertime.nowblog.services.PostService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
@@ -13,14 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Controller
 public class PostController {
 
     private final PostService postService;
-    private final UserRepository usersRepository;
+    private final UserRepository userRepository;
 
     public PostController(PostService postService, UserRepository userRepository) {
         this.postService = postService;
-        this.usersRepository = userRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/post/list")

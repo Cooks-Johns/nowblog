@@ -29,7 +29,7 @@ public class PostService {
 
         public Post save(Post post) {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            User user = usersDao.findUsersById(sessionUser.getId());
+            User user = usersDao.findUserById(sessionUser.getId());
             post.setOwner(user);
 
 

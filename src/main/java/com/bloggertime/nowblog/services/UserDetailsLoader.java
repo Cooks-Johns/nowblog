@@ -12,17 +12,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsLoader implements UserDetailsService {
 
-    private final UserRepository users;
+    private final User users;
 
-    public UserDetailsLoader(UserRepository users) {
+    public UserDetailsLoader(User users) {
         this.users = users;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = users.findByUserName(username);
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = users.findByUserName(userName);
         if (user == null) {
-            throw new UsernameNotFoundException("We could not find user without username: " + username);
+            throw new UsernameNotFoundException("We could not find user without username: " + userName);
         }
         return new UserWithRoles(user);
     }

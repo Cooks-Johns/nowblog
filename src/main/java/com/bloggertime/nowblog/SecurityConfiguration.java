@@ -53,7 +53,7 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/geocaches/create", "/geocache/list", "/dash"
+                        "/post/create", "/post/list", "/dash"
                         // we need to figure out if we want only signed up user to be able to access the cache's
 
                 )
