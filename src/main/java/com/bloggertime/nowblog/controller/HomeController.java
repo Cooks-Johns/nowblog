@@ -2,7 +2,7 @@ package com.bloggertime.nowblog.controller;
 
 
 import com.bloggertime.nowblog.models.User;
-import com.bloggertime.nowblog.repositories.UserRepository;
+import com.bloggertime.nowblog.repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-    private UserRepository users;
+    private Users users;
     private PasswordEncoder passwordEncoder;
 
-    public HomeController(UserRepository users, PasswordEncoder passwordEncoder) {
+    public HomeController(Users users, PasswordEncoder passwordEncoder) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
     }

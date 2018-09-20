@@ -2,7 +2,6 @@ package com.bloggertime.nowblog;
 
 
 import com.bloggertime.nowblog.services.UserDetailsLoader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,9 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserDetailsLoader usersLoader;
 
+    public SecurityConfiguration(UserDetailsLoader usersLoader) {
+        this.usersLoader = usersLoader;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -36,25 +37,25 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
         http
                 /* Login configuration */
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/dash") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
-                /* Logout configuration */
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/dash") // user's home page, it can be any URL
+                    .permitAll() // Anyone can go to the login page
+                    /* Logout configuration */
                 .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout") // append a query string value
+                    .logout()
+                    .logoutSuccessUrl("/login?logout") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
-                .authorizeRequests()
-                .antMatchers("/", "/home") // anyone can see the home and the ads pages
-                .permitAll()
+                    .authorizeRequests()
+                    .antMatchers("/", "/home") // anyone can see the home and the ads pages
+                    .permitAll()
                 /* Pages that require athentication */
                 .and()
-                .authorizeRequests()
-                .antMatchers(
-                        "/post/create",
-                                    "/post/list",
-                                    "/dash"
+                    .authorizeRequests()
+                    .antMatchers(
+                            "/post/create",
+                                        "/post/list",
+                                        "/dash"
 
                 )
                 .authenticated();

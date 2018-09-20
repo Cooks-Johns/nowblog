@@ -29,21 +29,6 @@ public class User {
     private String password;
 
 
-
-
-    public User(User copy) {
-        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
-        email = copy.email;
-        username = copy.username;
-        password = copy.password;
-    }
-
-//  editing password
-//    private transient String confirmPassword;
-//    private transient String newPassword;
-//    private transient String confirmNewPassword;
-
-
     public long getId() {
         return id;
     }
@@ -68,20 +53,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getusername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setusername(String username) {
+    public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -92,15 +69,19 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public User(User copy) {
-        id = copy.id;
-        firstName = copy.firstName;
-        lastName = copy.lastName;
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
         username = copy.username;
         password = copy.password;
-        email = copy.email;
-
-
     }
 
 
