@@ -2,6 +2,7 @@ package com.bloggertime.nowblog;
 
 
 import com.bloggertime.nowblog.services.UserDetailsLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,11 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private UserDetailsLoader usersLoader;
 
-    public SecurityConfiguration(UserDetailsLoader usersLoader) {
-        this.usersLoader = usersLoader;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,8 +52,9 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/post/create", "/post/list", "/dash"
-                        // we need to figure out if we want only signed up user to be able to access the cache's
+                        "/post/create",
+                                    "/post/list",
+                                    "/dash"
 
                 )
                 .authenticated();
