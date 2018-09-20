@@ -1,4 +1,6 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <!--add spring security to the line above-->
 
     <head th:fragment="header (pageTitle)">
@@ -71,6 +73,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Future Content</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                        </form>
                     </li>
                 </ul>
                 <!-- Links -->
