@@ -2,7 +2,6 @@ package com.bloggertime.nowblog.controller;
 
 
 import com.bloggertime.nowblog.models.User;
-
 import com.bloggertime.nowblog.repositories.Users;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.context.SecurityContextHolder;
