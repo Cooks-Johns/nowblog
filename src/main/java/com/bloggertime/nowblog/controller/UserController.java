@@ -19,10 +19,10 @@ public class UserController {
     private Users users;
     private PasswordEncoder passwordEncoder;
 
-
     public UserController(Users users, PasswordEncoder passwordEncoder) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
+
 
     }
 
