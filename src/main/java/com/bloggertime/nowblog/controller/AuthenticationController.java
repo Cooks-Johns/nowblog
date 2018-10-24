@@ -1,5 +1,6 @@
 package com.bloggertime.nowblog.controller;
 
+import com.bloggertime.nowblog.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,10 @@ public class AuthenticationController {
     @GetMapping("/login")
     public String showLoginForm() {
 
-        return "users/login";
+        User user = new User();
+
+
+        return "/users/login";
     }
 
 }

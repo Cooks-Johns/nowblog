@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="partials/fragments :: header (${'Home'})">
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+            ScrollReveal({ reset: true });
+        </script>
+
 
     </head>
     <body>
@@ -11,6 +16,14 @@
 
     <nav th:replace="partials/fragments :: navbar"></nav>
 
+
+    <h1 class="headline">
+        Widget Inc.
+    </h1>
+    <p class="tagline">
+        The perfect widgets.
+        <span class="punchline">Forever.</span>
+    </p>
 
     <div  class="homeHeader">
 
@@ -78,42 +91,42 @@
             </div>
         </div>
 
-        <!--register Modal-->
-        <!--<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-            <!--<div class="modal-dialog" role="document">-->
-                <!--<div class="modal-content">-->
-                    <!--<div class="modal-header">-->
-                        <!--<h5 class="modal-title" id="registerModalLabel">Register</h5>-->
-                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                            <!--<span aria-hidden="true">&times;</span>-->
-                        <!--</button>-->
-                    <!--</div>-->
-                    <!--<div class="modal-body">-->
-                        <!--<form th:action="@{/register}" method="POST" th:object="${user}">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="username" class="type">Username</label>-->
-                                <!--<input id="username" class="form-control type" th:field="*{username}"/>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="email" class="type">Email</label>-->
-                                <!--<input id="email" class="form-control type" th:field="*{email}"/>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="password" class="type">Password</label>-->
-                                <!--<input id="password" class="form-control type" type="password" th:field="*{password}"/>-->
-                            <!--</div>-->
-                            <!--<input class="btn btn-primary type" value="Sign me up!" type="submit"/>-->
-                        <!--</form>-->
-                    <!--</div>-->
-                    <!--<div class="modal-footer">-->
-                        <!--<button type="button" class="btn btn-secondary badge badge-pill badge-primarybadge badge-pill badge-primary" data-dismiss="modal">Take the Blue pill</button>-->
-                        <!--<button type="button" class="btn btn-primary badge badge-pill badge-danger">Take the Red Pill</button>-->
-                    <!--</div>-->
+        register Modal
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/register}" method="POST" th:object="${user}">
+                            <div class="form-group">
+                                <label for="username" class="type">Username</label>
+                                <input id="username" class="form-control type" th:field="*{username}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="type">Email</label>
+                                <input id="email" class="form-control type" th:field="*{email}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="type">Password</label>
+                                <input id="password" class="form-control type" type="password" th:field="*{password}"/>
+                            </div>
+                            <input class="btn btn-primary type" value="Sign me up!" type="submit"/>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary badge badge-pill badge-primarybadge badge-pill badge-primary" data-dismiss="modal">Take the Blue pill</button>
+                        <button type="button" class="btn btn-primary badge badge-pill badge-danger">Take the Red Pill</button>
+                    </div>
 
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!---->
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="container">
@@ -166,6 +179,16 @@
 
 
     <script th:replace="partials/fragments :: bootstrap"></script>
+
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <script>
+
+        ScrollReveal().reveal('.headline');
+        ScrollReveal().reveal('.tagline', { delay: 500 });
+        ScrollReveal().reveal('.punchline', { delay: 2000 });
+
+    </script>
 
     <div>
         <br />

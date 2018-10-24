@@ -1,56 +1,28 @@
 package com.bloggertime.nowblog.models;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
+import java.beans.Transient;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
+    private Long id;
+    private String username;
+    private String password;
+    private String passwordConfirm;
+    private Set<Role> roles;
 
 
     @Id
-    @GeneratedValue
-    private long id;
-
-    @Column   // (nullable = false)   ----- > set to false when html tymelyfe has the input
-    private String firstName;
-
-    @Column     // (nullable = false)   ----- > set to false when html tymelyfe has the input
-    private String lastName;
-
-
-
-    @Column(nullable = false , unique = true)
-    private String username;
-
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-
-    public long getId() {
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getUsername() {
@@ -61,14 +33,6 @@ public class User {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -77,25 +41,20 @@ public class User {
         this.password = password;
     }
 
-    public User(User copy) {
-        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
-        email = copy.email;
-        username = copy.username;
-        password = copy.password;
+    @Transient
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
-
-    public User(String firstName, String lastName, String username, String password, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
-    // copy constructor for authentication
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-
-    public User(){};
 
 }
